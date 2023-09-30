@@ -14,7 +14,7 @@ const Nav = () => {
     if (userInfo) {
       dispatch(setUser(userInfo));
     }
-  }, []);
+  }, [dispatch]);
 
   function logoutHandler() {
     localStorage.removeItem("user");
@@ -24,12 +24,13 @@ const Nav = () => {
 
   return (
     <>
-      <div className="Nav p-5">
+      <div className="Nav p-5" id="nav">
         <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link to={"/"} className="flex items-center">
               <img
                 src="https://flowbite.com/docs/images/logo.svg"
+                s
                 className="h-8 mr-3"
                 alt="blogify Logo"
               />
@@ -106,22 +107,26 @@ const Nav = () => {
             </div>
 
             <div className=" md:order-2 n-profile flex gap-5 items-center justify-center">
-              <div className="n-pro-img w-[45px] h-[45px] bg-red-400 rounded-full">
-                <Link>
-                  <img
-                    src="/assets/profile.webp"
-                    alt="profile"
-                    className="w-full h-full rounded-full"
-                  />
-                </Link>
-              </div>
+              {user && (
+                <div className="n-pro-img w-[45px] h-[45px] bg-red-400 rounded-full">
+                  <Link>
+                    <img
+                      src="/assets/profile.webp"
+                      alt="profile"
+                      className="w-full h-full rounded-full"
+                    />
+                  </Link>
+                </div>
+              )}
               <div className="n-search-icon ">
-                <i
-                  className="bi bi-list text-3xl md:hidden cursor-pointer"
-                  onClick={() => {
-                    dispatch(setSidebar(!sidebar));
-                  }}
-                ></i>
+                <a href="#nav">
+                  <i
+                    className="bi bi-list text-3xl md:hidden cursor-pointer"
+                    onClick={() => {
+                      dispatch(setSidebar(!sidebar));
+                    }}
+                  ></i>
+                </a>
               </div>
             </div>
           </div>
@@ -162,7 +167,7 @@ const Nav = () => {
               <li>
                 <Link
                   to={`/userblogs/${user.userId}`}
-                  className="block py-2 pl-3 pr-4 text-gray-900 bg-blue-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded  md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   YOUR BLOGS
                 </Link>
@@ -170,7 +175,7 @@ const Nav = () => {
               <li>
                 <Link
                   to={`/createnewblog/${user.userId}`}
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded bg-blue-700 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className="block py-2 pl-3 pr-4 text-white rounded bg-blue-700  md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   WRITE
                 </Link>
@@ -179,7 +184,7 @@ const Nav = () => {
               <li>
                 <Link
                   to={"/"}
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className="block py-2 pl-3 pr-4 text-white rounded bg-blue-700  md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                   onClick={logoutHandler}
                 >
                   LOGOUT
@@ -191,7 +196,7 @@ const Nav = () => {
               <li>
                 <Link
                   to={"/login"}
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className="block py-2 pl-3 pr-4 text-white rounded bg-blue-700   md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   LOGIN
                 </Link>
@@ -199,7 +204,7 @@ const Nav = () => {
               <li>
                 <Link
                   to={"/register"}
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className="block py-2 pl-3 pr-4 text-white rounded bg-blue-700 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   REGISTER
                 </Link>

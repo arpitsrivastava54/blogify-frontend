@@ -9,22 +9,23 @@ const BlogPage = () => {
 
 
   const blogid = useParams().id;
-  async function fetchData (){
-    const result = await getBlog(blogid);
-    setBlogData(result[0])
-  }
+  
   
   useEffect(()=>{
+   const fetchData = async ()=>{
+      const result = await getBlog(blogid);
+      setBlogData(result[0])
+    }
     fetchData();
-  },[])
+  },[blogid])
 
 
   return (
     <div className="UserBlogPage min-h-[86vh] flex flex-col lg:flex-row w-full px-5 gap-[5%] mt-9">
-      <Blog blogData={blogData}/>
+       
+       <Blog blogData={blogData}/>
       <MainAbout/>
     </div>
   );
 };
-
 export default BlogPage;

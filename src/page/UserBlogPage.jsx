@@ -8,18 +8,19 @@ const UserBlogPage = () => {
   const userId = useParams().userid;
   const [blogs, setBlogs] = useState([]);
 
-  async function fetchData() {
-    try {
-      const result = await getUsersBlogByUsername(`allusersblogs/${userId}`);
-      setBlogs(result);
-    } catch (error) {
-      console.log("KUCH gadbad hai");
-    }
-  }
+  
 
   useEffect(() => {
+    const fetchData = async ()=> {
+      try {
+        const result = await getUsersBlogByUsername(`allusersblogs/${userId}`);
+        setBlogs(result);
+      } catch (error) {
+        console.log("KUCH gadbad hai");
+      }
+    }
     fetchData();
-  }, []);
+  }, [getUsersBlogByUsername,userId]);
 
   return (
     <div className="UserblogPage min-h-[80vh] p-5 mt-9">
