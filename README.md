@@ -1,1 +1,1 @@
-### this is KHOJO SEARCH WEB APP
+### this is BLOGIFY WEB APP
