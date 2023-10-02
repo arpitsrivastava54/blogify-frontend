@@ -42,7 +42,7 @@ const Blog = ({ blogData }) => {
       <p className=" my-5 text-center">Author : <span className="text-orange-500">@ {blogData.username}</span></p>
         </div>
         <div className="heading-wrapper flex flex-col gap-3 justify-center items-center my-5">
-          {user && (
+          {user.username === blogData.username && (
             <div className="blog-icons flex gap-5">
               <button
                 type="button"
