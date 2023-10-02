@@ -78,7 +78,6 @@ const UpdateBlog = () => {
           <div className=" flex flex-col gap-8 mt-[5rem]">
             <div className="flex gap-5 flex-col lg:flex-row">
               <label htmlFor="photo" className="text-center">
-                photo
                 <i className="bi bi-image text-2xl"></i>
               </label>
               <input
