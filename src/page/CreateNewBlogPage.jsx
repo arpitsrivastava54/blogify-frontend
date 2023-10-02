@@ -88,7 +88,7 @@ const CreateNewBlogPage = () => {
               <input
                 type="text"
                 placeholder="Title"
-                className="placeholder:text-2xl text-3xl font-semibold"
+                className="placeholder:text-2xl text-3xl font-semibold w-full"
                 id=""
                 name="text"
                 value={title}
